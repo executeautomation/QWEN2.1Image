@@ -1,0 +1,28 @@
+# Qwen-Image-2.1 generation pipeline — dependencies
+# Pinned to versions verified working on macOS (Python 3.14.4, MPS backend).
+#
+# Install:
+#   python -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+
+# --- Core ML stack (MPS-friendly on Apple Silicon) ---
+torch==2.14.0
+torchvision==0.29.0
+numpy==2.5.3
+
+# --- HuggingFace model loading & inference ---
+# NOTE: requires diffusers >= 0.41 with QwenImage21Pipeline support
+# Pinned to the in-place dev build that ships Qwen-Image-2.1 support.
+diffusers @ git+https://github.com/huggingface/diffusers.git
+transformers==5.17.0
+huggingface_hub==1.32.0
+accelerate==1.15.0
+safetensors==0.8.0
+
+# --- Tokenization (required by Qwen text encoder) ---
+tokenizers==0.23.2
+sentencepiece==0.2.2
+
+# --- Image I/O ---
+pillow==12.3.0
